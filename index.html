@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset='utf-8'>
+	<link href="./style.css" rel="stylesheet" />
+	<link href="./font.css" rel="stylesheet" />
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<section class='intro'>
+		<div class="intro-text">
+			<h1>Covidcookery</h1>
+			<span>
+				<!-- <h2>Inspiration from an amazing Reddit community — Covidcookery</h2> -->
+			</span>
+			<p class="author">
+				YUAN HUA
+				<span id="date">DEC 1, 2020</span>
+			</p>
+			<p class="desc">
+				As a result of the COVID-19 pandemic, more and more people are eating meals at home. 
+				Homecooking has become as a way to pass hours and feel productive, a form to entertain ourselves, and 
+				even an outlet to channel all the anxieties. The vast majority of people have altered their 
+				food habits and eating diets. In a subReddit <i><b>Covidcookery</b></i>, people are posting their culinary masterpieces 
+				while they wait out the global pandemic.
+			</p>
+		</div>
+		
+		<!-- <figure class="aligncenter">
+			<img class = "img-container" src="img/PandemicCooking_Final.jpg">
+			<figcaption itemprop="caption description" class="img-caption">
+				<p class="img-caption">
+					<a href="https://www.bonappetit.com/story/pandemic-cooking-practical-magic" target="_blank">
+						By Rose Wong | Bon Appétit
+					</a>
+				</p>
+			</figcaption>
+		</figure>	 -->
+	</section>
+
+	<section class='canvas'>
+		<!-- <div>
+			<h2>What are people eating during lockdown?</h2>
+			<p class="desc" id="paragraph1">
+				(desc)
+			</p>
+		</div> -->
+
+		<div class = 'plot'>
+			<!-- <div class='buttons' id='child_div_1'>
+				<div class="btn-group-vertical" data-toggle="buttons">
+					<label class="btn btn-default active"><input type="radio" name="options" id="btn_aug1_15" checked>Aug 1–15</label>
+					<label class="btn btn-default"><input type="radio" name="options" id='btn_aug16_31'>Aug 16–31</label>
+					<label class="btn btn-default"><input type="radio" name="options" id='btn_sep1_15'>Sep 1–15</label>
+					<label class="btn btn-default"><input type="radio" name="options" id='btn_sep16_30'>Sep 16–30</label>
+					<label class="btn btn-default"><input type="radio" name="options" id="btn_oct1_15">Oct 1–15</label>
+					<label class="btn btn-default"><input type="radio" name="options" id='btn_oct16_31'>Oct 16–31</label>
+					<label class="btn btn-default"><input type="radio" name="options" id='btn_nov1_15'>Nov 1–15</label>
+					<label class="btn btn-default"><input type="radio" name="options" id='btn_nov16_30'>Nov 16–30</label>
+				</div>
+			</div>
+			<div class='tooltip_title' id='child_div_2'></div> -->
+			<div class='graph' id='child_div_3'>
+				<svg class="svg"></svg>
+				<div class='navigation' id="myHeader">
+					<p>In a subReddit Covidcookery, people are posting their culinary masterpieces 
+						while they wait out the global pandemic. What are people eating during lockdown?
+					</p>
+					<div class="buttons_navigation">
+						<label class="btn btn-default active"><input type="radio" name="options" id="button_network" checked>Food Network</label>
+						<label class="btn btn-default"><input type="radio" name="options" id='button_summary'>Summary of Changes</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- <section class='bar_graph'>
+		<div class="viewof-keyframe"></div>
+		<div class="chart" id="bar_animation" style="width:600px;"></div>
+			<script type="module">
+				import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+				import define from "https://api.observablehq.com/d/0fe9970960059896.js?v=3";
+				(new Runtime).module(define, name => {
+				if (name === "viewof keyframe") return Inspector.into(".viewof-keyframe")();
+				if (name === "chart") return Inspector.into(".chart")();
+				return ["update"].includes(name) || null;
+				});
+			</script>
+		</div>
+	</section> -->
+
+
+	<script src='https://d3js.org/d3.v4.min.js'></script>
+	<!-- <script src = './lib/d3/d3.js'></script> -->
+	<script src='./script.js'></script>
+	
+</body>
+
+
+</html>
