@@ -68,13 +68,11 @@ section.canvas {
 .viewof-keyframe {
   color: white;
 }
-#bar_animation {
-  color: white;
-}
 #bar {
-  margin-left: 0;
-  padding: 0;
-  width: 600px;
+  /* margin-left: 250px; */
+  /* padding: 0; */
+  /* width: 600px; */
+  fill: white;
 }
 #child_div_1 {
   width: 10%;
@@ -194,6 +192,7 @@ svg {
   position: absolute;
 }
 .navigation {
+  float: left;
   width: 320px;
   height: 200px;
   position: relative;
@@ -211,9 +210,9 @@ svg {
   font-size:15px;
 }
 .sticky {
-  position: fixed;
+  position: float;
   top: 0;
-  /* padding-top: 102px; */
+  /* padding-top: 500px; */
 }
 .buttons_navigation {
   margin-left: 5%;
@@ -241,24 +240,26 @@ svg {
 }
 /* animated bar graph */
 .viewof-keyframe {
-  margin-left:12.5%;
+  /* margin-left:300px; */
 }
 #bar_animation {
-  width: 75%;
-  margin:0 auto 10% auto;
+  max-width: 600px;
+  width: 80%;
+  position: relative;
+  /* float: left; */
+  margin-left: 500px;
   font-family: "Roboto Regular";
   font-size:12px;
-  color:black;
 }
 #bar_animation text {
   font-family: "Roboto Regular";
   font-size:14px;
-  color:black;
+  fill:rgb(255, 255, 255);
 }
 #bar_animation form {
   font-family: "Roboto Regular";
   font-size:10px;
-  color:black;
+  color:rgb(255, 255, 255);
 }
 /* .aligncenter {
     text-align: center;
