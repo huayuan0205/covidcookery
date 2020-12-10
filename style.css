@@ -34,7 +34,7 @@ section.intro p.desc {
     font-family: "Roboto Light";
     font-size:15px;
     line-height: 1.6;
-    margin: 40px auto 100px auto;
+    margin: 40px auto 50px auto;
     width: 45%;
 }
 #date {
@@ -49,6 +49,7 @@ section.intro p.desc {
 /* canvas section */
 section.canvas {
   width: 100%;
+  min-height: 1080px;
   margin: 0 auto 0 auto;
   padding: 0;
   background-color:black;
@@ -56,10 +57,24 @@ section.canvas {
 }
 .plot {
   width: 100%;
+  min-width: 1080px;
   min-height: 960px;
   margin-top: 20px;
   margin-left: 0;
   padding: 0;
+  position: absolute;
+  background-color:black;
+}
+.viewof-keyframe {
+  color: white;
+}
+#bar_animation {
+  color: white;
+}
+#bar {
+  margin-left: 0;
+  padding: 0;
+  width: 600px;
 }
 #child_div_1 {
   width: 10%;

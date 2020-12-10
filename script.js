@@ -1,4 +1,5 @@
-var svg = d3.select("svg"),
+
+var svg = d3.select(".plot").append('svg')
     width = +svg.node().getBoundingClientRect().width,
     height = +svg.node().getBoundingClientRect().height;
 svg.attr("viewBox", [0,0,width,height])//the area of where the network fits|min-x,min-y,width,height
@@ -128,25 +129,38 @@ d3.json("./data/test.json", function (error,data) {
     //   update(data8);
     //   console.log('Nov16–30');
     // });
-
+    // d3.select("#iframe").remove();
     update(data1);
 
     d3.select('#button_network').on('click', function(){
       //clear the bar graph
-      // d3.select(".links").remove();
+      // d3.select("#iframe").remove();
+      myFunction();
 
       update(data1);
       console.log('network');
       
     });
+
+    var x = document.getElementById("bar");
+    x.style.display = "none";
+    
     d3.select('#button_summary').on('click', function(){
+      myFunction();
       //clear the network
       d3.select(".links").remove();
       d3.select(".nodes").remove();
-
-      barGraph();
+      // barGraph();
       console.log('summary');
     });
+
+		function myFunction() {
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+		}
 })
 
 function getData(key,data){
@@ -315,8 +329,27 @@ function barGraph(){
   //   console.log("parsed:" + data);
   // })
 
-  d3.csv("https://gist.githubusercontent.com/d3noob/fa0f16e271cb191ae85f/raw/bf896176236341f56a55b36c8fc40e32c73051ad/treedata.csv", function(data){
-    console.log(data);
+  d3.csv("https://raw.githubusercontent.com/huayuan0205/covidcookery/master/data/cumulated_food.csv", function(data){
+
+    data.forEach(d => {
+      d.date,
+      d.name,
+      d.value = +d.value
+    });
+
+   console.log(data);
+   //{date: "2020-08-01", name: "poppyseed", value: 0}
+
+  names = new Set(data.map(d => d.name));
+
+  datevalues = d3.nest()
+    .key(d=>{return d.date})
+    .entries(data)
+  console.log(datevalues);
+  // datevalues = Array.from(d3.rollup(data, ([d]) => d.value, d => +d.date, d => d.name))
+  //   .map(([date, data]) => [new Date(date), data])
+  //   .sort(([a], [b]) => d3.ascending(a, b))
+  
 
      // set bar padding
      var tickDuration = 500;
