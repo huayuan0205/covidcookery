@@ -22,21 +22,12 @@
 				<span id="date">DEC 1, 2020</span>
 			</p>
 			<p class="desc">
-				As a result of the COVID-19 pandemic, more and more people are eating meals at home. 
-				Homecooking has become as a way to pass hours and feel productive, a form to entertain ourselves, and 
-				even an outlet to channel all the anxieties. The vast majority of people have altered their 
-				food habits and eating diets. In a subReddit <i><b>Covidcookery</b></i>, people are posting their culinary masterpieces 
-				while they wait out the global pandemic.
+				As a result of the COVID-19 pandemic, more and more people are eating meals at home.
+				Homecooking has become as a way to pass hours and feel productive, a form to entertain ourselves, and
+				even an outlet to channel all the anxieties. The vast majority of people have altered their
+				food habits and eating diets. In a subReddit <i><a href="https://www.reddit.com/r/covidcookery/" target="_blank">Covidcookery</a></i>, people are posting their
+				culinary masterpieces while they wait out the global pandemic.
 			</p>
-		</div>
-		<div class='navigation' id="myHeader">
-			<p>In a subReddit Covidcookery, people are posting their culinary masterpieces 
-				while they wait out the global pandemic. What are people eating during lockdown?
-			</p>
-			<div class="buttons_navigation">
-				<label class="btn btn-default active"><input type="radio" name="options" id="button_network" checked>Food Network</label>
-				<label class="btn btn-default" onclick="myFunction()"><input type="radio" name="options" id='button_summary'>Summary of Changes</label>
-			</div>
 		</div>
 		<!-- <figure class="aligncenter">
 			<img class = "img-container" src="img/PandemicCooking_Final.jpg">
@@ -51,64 +42,59 @@
 	</section>
 
 	<section class='canvas'>
-		<div class = 'plot'>
-			<!-- <div class='buttons' id='child_div_1'>
-				<div class="btn-group-vertical" data-toggle="buttons">
-					<label class="btn btn-default active"><input type="radio" name="options" id="btn_aug1_15" checked>Aug 1–15</label>
-					<label class="btn btn-default"><input type="radio" name="options" id='btn_aug16_31'>Aug 16–31</label>
-					<label class="btn btn-default"><input type="radio" name="options" id='btn_sep1_15'>Sep 1–15</label>
-					<label class="btn btn-default"><input type="radio" name="options" id='btn_sep16_30'>Sep 16–30</label>
-					<label class="btn btn-default"><input type="radio" name="options" id="btn_oct1_15">Oct 1–15</label>
-					<label class="btn btn-default"><input type="radio" name="options" id='btn_oct16_31'>Oct 16–31</label>
-					<label class="btn btn-default"><input type="radio" name="options" id='btn_nov1_15'>Nov 1–15</label>
-					<label class="btn btn-default"><input type="radio" name="options" id='btn_nov16_30'>Nov 16–30</label>
+		<div>
+			<div class='navigation' id="myHeader">
+				<p>In a subReddit Covidcookery, people are posting their culinary masterpieces
+					while they wait out the global pandemic. What are people eating during lockdown?
+				</p>
+				<div class="buttons_navigation">
+					<label class="btn btn-default active"><input type="radio" name="options" id="button_network"
+							checked>Food Network</label>
+					<label class="btn btn-default" onclick="myFunction()"><input type="radio" name="options"
+							id='button_summary'>Summary of Changes</label>
 				</div>
-			</div> -->
-			<!-- <div class='tooltip_title' id='child_div_2'></div> -->
-			<div class='graph' id='child_div_3'>
-				<!-- <svg class="svg"></svg> -->
-				<!-- <iframe width="100%" height="1066" frameborder="0" id='iframe' src="https://observablehq.com/embed/0fe9970960059896?cell=chart"></iframe> -->
-				<div id="bar">
-					<div class="viewof-keyframe"></div>
-					<div class="chart" id="bar_animation"></div>
-					<script type="module">
-						import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-						import define from "https://api.observablehq.com/d/0fe9970960059896.js?v=3";
-						(new Runtime).module(define, name => {
-						if (name === "viewof keyframe") return Inspector.into(".viewof-keyframe")();
-						if (name === "chart") return Inspector.into(".chart")();
-						return ["update"].includes(name) || null;
-						});
-					</script>
-					</div>
+			</div>
+			<div class = 'dropdown_box' id="dropdown">
+				<div class = 'selectpicker'>
+					<select id="networks">
+						<option value="Aug1_15" selected="selected">Aug 1–15</option>
+						<option value="Aug16_31">Aug 16–31</option>
+						<option value="Sep1_15">Sep 1–15</option>
+						<option value="Sep16_30">Sep 16–30</option>
+						<option value="Oct1_15">Oct 1–15</option>
+						<option value="Oct16_31">Oct 16–31</option>
+						<option value="Nov1_15">Nov 1–15</option>
+						<option value="Nov16_30">Nov 16–30</option>
+					</select>
+				</div>
+				<div class='tooltip_title' id='tooltip'></div>
+			</div>
+			<div class='plot'>
+				<div class='graph' id='child_div_3'>
+					<div id="bar">
+						<div class="viewof-keyframe" ></div>
+						<div class="chart"></div>
+						<script type="module">
+							import {Runtime, Inspector, Library} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+							import define from "https://api.observablehq.com/d/0fe9970960059896.js?v=3";
+							(new Runtime).module(define, name => {
+							if (name === "viewof keyframe") return Inspector.into(".viewof-keyframe")();
+							if (name === "chart") return Inspector.into(".chart")();
+							return ["update"].includes(name) || null;
+							});
+						</script>
 					</div>
 				</div>
-				
+			</div>
+		</div>
+
 		</div>
 	</section>
 
-	<!-- <section class='bar_graph'>
-		<div class="viewof-keyframe"></div>
-		<div class="chart" id="bar_animation"></div>
-			<script type="module">
-				import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
-				import define from "https://api.observablehq.com/d/0fe9970960059896.js?v=3";
-				(new Runtime).module(define, name => {
-				if (name === "viewof keyframe") return Inspector.into(".viewof-keyframe")();
-				if (name === "chart") return Inspector.into(".chart")();
-				return ["update"].includes(name) || null;
-				});
-			</script>
-		</div>
-	</section> -->
-
-	<section class='footer'>
-
-	</section>
 	<script src='https://d3js.org/d3.v4.min.js'></script>
 	<!-- <script src = './lib/d3/d3.js'></script> -->
 	<script src='./script.js'></script>
-	
+
 </body>
 
 
