@@ -258,7 +258,7 @@ svg {
   float: left;
   width: 320px;
   height: 200px;
-  margin-left: 0.5%;
+  margin-left: 2%;
   margin-top: 50px;
   z-index: 9;
   clear: both;
@@ -267,8 +267,6 @@ svg {
   top: 650px;
 }
 .tooltip_holder {
-  z-index: 9;
-  background-color:rgba(255, 255, 255, 0.2);
   width: 320px;
   height: auto;
   position: absolute;
@@ -284,7 +282,7 @@ svg {
   font-family:"Roboto Regular";
   font-size:14px;
   color: white;
-  margin-left: 5%;
+  margin-left: 0%;
   margin-top: 20px;
   margin-bottom: 0;
   padding: 0;
@@ -294,12 +292,12 @@ svg {
   width: 280px;	
   /* height: auto; */
   /* background-color:red;							 */			
-  font-family:"Roboto Light-Italic";
-  font-size:15px;
+  font-family:"Baskerville Italic";
+  font-size:17px;
   color: white;
   line-height: 1.5em;
   text-align: left;	
-  margin-left: 5%;	
+  margin-left: 0%;	
   margin-top: 20px;
   padding: 0;
   border: 0px;		

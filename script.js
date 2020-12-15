@@ -42,8 +42,9 @@ var tooltip= d3.select('#tooltip')
   .style("opacity", 0);
 var up_votes = d3.select('#like')
   .style("opacity", 0);
-var tooltip_holder = d3.select('.tooltip_holder')
+var icon = d3.select('.fas')
   .style("opacity", 0);
+
 //Freeze navigation menu
 window.onscroll = function () {
   myFunction()
@@ -240,15 +241,15 @@ function update(graph) {
       d3.select(this).style('opacity', 1);
       d3.select(this).style('cursor', 'pointer');
       d3.select(this.parentNode).raise();
-      tooltip_holder
-        .transition()
-        .duration(200)
-        .style('opacity', 1)
       tooltip
         .transition()
         .duration(200)
         .style('opacity', 1)
       tooltip.html("'" + d.title + "'")	 
+      icon
+        .transition()
+        .duration(200)
+        .style('opacity', 1)
       up_votes
         .transition()
         .duration(200)
@@ -256,9 +257,9 @@ function update(graph) {
       up_votes.html(d.vote);
     })
     .on('mouseout', function () {
-      tooltip_holder.style('opacity', 0);
       tooltip.style('opacity', 0);
-      up_votes.style('opacity', 0)
+      up_votes.style('opacity', 0);
+      icon.style("opacity", 0);
       // .on('mousemove', function() {
       //   d3.select('#tooltip').style('left', (d3.event.pageX+10) + 'px').style('top', (d3.event.pageY+10) + 'px')
       // })
@@ -327,93 +328,3 @@ function dragended(d) {
   d.fy = null;
 }
 
-function barGraph() {
-
-  //create two g elements for the network
-  var bars = svg.append("g").attr("class", "bars")
-
-  var title = bars.append('text')
-    .text('Top 20 food that people are eating during lockdown')
-    .attr('class', 'bar_title')
-    .attr('x', 400)
-    .attr('y', 15)
-    .style('fill', 'white')
-
-  // const parsedData = d3.csvParse('./data/cumulated_food.csv')
-
-
-  // d3.text('./data/cumulated_food.csv', function(error, raw){
-  //   var dsv = d3.dsvFormat(';')
-  //   var data = dsv.parse(raw)
-  //   console.log("parsed:" + data);
-  // })
-
-  d3.csv("https://raw.githubusercontent.com/huayuan0205/covidcookery/master/data/cumulated_food.csv", function (data) {
-
-    data.forEach(d => {
-      d.date,
-        d.name,
-        d.value = +d.value
-    });
-
-    console.log(data);
-    //{date: "2020-08-01", name: "poppyseed", value: 0}
-
-    names = new Set(data.map(d => d.name));
-
-    datevalues = d3.nest()
-      .key(d => {
-        return d.date
-      })
-      .entries(data)
-    console.log(datevalues);
-    // datevalues = Array.from(d3.rollup(data, ([d]) => d.value, d => +d.date, d => d.name))
-    //   .map(([date, data]) => [new Date(date), data])
-    //   .sort(([a], [b]) => d3.ascending(a, b))
-
-
-    // set bar padding
-    var tickDuration = 500;
-
-    var top_n = 12;
-    var height = 600;
-    var width = 960;
-
-    const margin = {
-      top: 80,
-      right: 0,
-      bottom: 5,
-      left: 0
-    };
-
-    let barPadding = (height - (margin.bottom + margin.top)) / (top_n * 5);
-  });
-
-
-
-
-
-  // domain scale
-  // let x = d3.scaleLinear()
-  //   .domain([0, d3.max(yearSlice, d => d.value)])
-  //   .range([margin.left, width-margin.right-65]);
-
-  // let y = d3.scaleLinear()
-  //   .domain([top_n, 0])
-  //   .range([height-margin.bottom, margin.top]);
-
-  // let xAxis = d3.axisTop()
-  //   .scale(x)
-  //   .ticks(width > 500 ? 5:2)
-  //   .tickSize(-(height-margin.top-margin.bottom))
-  //   .tickFormat(d => d3.format(',')(d));
-
-}
-
-function parseData(d) {
-  return {
-    date: d.date,
-    food_name: d.food_name,
-    value: d.value
-  }
-}
