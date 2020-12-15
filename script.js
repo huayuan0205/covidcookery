@@ -28,8 +28,8 @@ var simulation = d3.forceSimulation()
   .force("link", d3.forceLink().id(function (d) {
     return d.id;
   }))
-  .force("charge", d3.forceManyBody().strength(-10))
-  .force("center", d3.forceCenter(width / 2 , height / 2 - 150))
+  .force("charge", d3.forceManyBody().strength(-8))
+  .force("center", d3.forceCenter(width / 2+100 , height / 2 - 150))
   .force("collision", d3.forceCollide().radius(5)) //prevent overlap
   // .force("forceX",d3.forceX())
   // .force("forceY",d3.forceY())
@@ -40,7 +40,10 @@ var simulation = d3.forceSimulation()
 
 var tooltip= d3.select('#tooltip')
   .style("opacity", 0);
-
+var up_votes = d3.select('#like')
+  .style("opacity", 0);
+var tooltip_holder = d3.select('.tooltip_holder')
+  .style("opacity", 0);
 //Freeze navigation menu
 window.onscroll = function () {
   myFunction()
@@ -58,7 +61,7 @@ window.onscroll = function () {
 //   }
 // }
 
-d3.json("./data/test2.json", function (error, data) {
+d3.json("./data/network_aug_nov.json", function (error, data) {
   if (error) throw error;
 
   data1 = getData("Aug1_15", data);
@@ -237,20 +240,31 @@ function update(graph) {
       d3.select(this).style('opacity', 1);
       d3.select(this).style('cursor', 'pointer');
       d3.select(this.parentNode).raise();
+      tooltip_holder
+        .transition()
+        .duration(200)
+        .style('opacity', 1)
       tooltip
         .transition()
         .duration(200)
         .style('opacity', 1)
       tooltip.html("'" + d.title + "'")	 
+      up_votes
+        .transition()
+        .duration(200)
+        .style('opacity', 1);
+      up_votes.html(d.vote);
     })
     .on('mouseout', function () {
-      d3.select('#tooltip').style('opacity', 0)
+      tooltip_holder.style('opacity', 0);
+      tooltip.style('opacity', 0);
+      up_votes.style('opacity', 0)
       // .on('mousemove', function() {
       //   d3.select('#tooltip').style('left', (d3.event.pageX+10) + 'px').style('top', (d3.event.pageY+10) + 'px')
       // })
     })
     .on('click', function(d){
-      window.open(d.img, 'post_link','_blank')
+      window.open(d.comment, 'post_link','_blank')
     })
 
   nodeElements.exit().remove();
